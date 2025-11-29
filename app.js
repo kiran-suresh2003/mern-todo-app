@@ -13,8 +13,10 @@ const Todo = require('./models/todo'); // Import the Todo model
 const app = express(); // Create an instance of the express application
 const PORT = process.env.PORT || 3000; // Set the port from the environment variable or default to 3000
 
-// Connect to MongoDB
-mongoose.connect(process.env.MONGO_URI)
+// Conneccct to MongoDB
+const connectionString= process.env.MONGODB_URI
+mongoose.connect(connectionString)
+
     .then(() => console.log("MongoDB connected")) // Log a message if the connection is successful
     .catch(err => console.error("MongoDB connection error:", err)); // Log an error message if the connection fails
 
