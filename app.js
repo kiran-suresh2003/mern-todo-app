@@ -14,9 +14,7 @@ const app = express(); // Create an instance of the express application
 const PORT = process.env.PORT || 3000; // Set the port from the environment variable or default to 3000
 
 // Conneccct to MongoDB
-const connectionString= process.env.MONGODB_URI
-mongoose.connect(connectionString)
-
+mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log("MongoDB connected")) // Log a message if the connection is successful
     .catch(err => console.error("MongoDB connection error:", err)); // Log an error message if the connection fails
 
@@ -66,6 +64,6 @@ app.get('/register', (req, res) => {
 });
 
 // Start the server
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0" , () => {
     console.log(`Server running on http://localhost:${PORT}`); // Log a message when the server starts
 });
